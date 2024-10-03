@@ -2,9 +2,6 @@ package gtPlusPlus.everglades;
 
 import static gregtech.api.enums.Mods.GTPlusPlusEverglades;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
 import net.minecraft.block.Block;
 import net.minecraftforge.common.DimensionManager;
 
@@ -18,6 +15,7 @@ import cpw.mods.fml.common.event.FMLServerStartingEvent;
 import cpw.mods.fml.common.registry.GameRegistry;
 import gregtech.api.enums.Mods;
 import gtPlusPlus.api.objects.Logger;
+import gtPlusPlus.core.config.ASMConfiguration;
 import gtPlusPlus.core.lib.GTPPCore;
 import gtPlusPlus.core.lib.GTPPCore.Everglades;
 import gtPlusPlus.core.material.MaterialGenerator;
@@ -28,14 +26,13 @@ import gtPlusPlus.everglades.dimension.DimensionEverglades;
 import gtPlusPlus.everglades.gen.gt.WorldGen_GT_Base;
 import gtPlusPlus.everglades.gen.gt.WorldGen_GT_Ore_Layer;
 import gtPlusPlus.everglades.gen.gt.WorldGen_Ores;
-import gtPlusPlus.preloader.PreloaderCore;
 
 @Mod(
     modid = Mods.Names.G_T_PLUS_PLUS_EVERGLADES,
     name = Everglades.NAME,
     version = Everglades.VERSION,
     dependencies = "required-after:Forge; after:dreamcraft; after:IC2; required-after:gregtech; required-after:miscutils;")
-public class GTPPEverglades implements ActionListener {
+public class GTPPEverglades {
 
     // Mod Instance
     @Mod.Instance(Mods.Names.G_T_PLUS_PLUS_EVERGLADES)
@@ -134,7 +131,7 @@ public class GTPPEverglades implements ActionListener {
         WorldGen_GT_Base.oreveinPercentage = 64;
         WorldGen_GT_Base.oreveinAttempts = 16;
         WorldGen_GT_Base.oreveinMaxPlacementAttempts = 4;
-        if (PreloaderCore.DEBUG_MODE || GTPPCore.DEVENV) {
+        if (ASMConfiguration.debug.debugMode || GTPPCore.DEVENV) {
             WorldGen_GT_Base.debugWorldGen = true;
         }
         DarkWorldContentLoader.run();
@@ -170,11 +167,5 @@ public class GTPPEverglades implements ActionListener {
 
     public static synchronized void setEvergladesBiome(BiomeEverglades darkWorld_Biome) {
         Everglades_Biome = darkWorld_Biome;
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent arg0) {
-        // TODO Auto-generated method stub
-
     }
 }

@@ -11,7 +11,6 @@ import gregtech.api.enums.Mods;
 public class ASMConfiguration {
 
     public static Debug debug = new Debug();
-    public static General general = new General();
 
     // Debug
     @Config.Comment("Debug section")
@@ -25,25 +24,6 @@ public class ASMConfiguration {
         @Config.DefaultBoolean(false)
         public boolean debugMode;
 
-        @Config.Comment("Enable/Disable COFH OreDictionaryArbiter Patch (Useful for Development)")
-        @Config.DefaultBoolean(true)
-        public boolean enableCofhPatch;
-
-        @Config.Comment("Enable/Disable Forge OreDictionary Patch (Useful for Development)")
-        @Config.DefaultBoolean(false)
-        public boolean enableOreDictPatch;
     }
 
-    @Config.Comment("General section")
-    public static class General {
-        // General Features
-
-        @Config.Comment("Prevents the game crashing from having invalid keybinds. https://github.com/alkcorp/GTplusplus/issues/544")
-        @Config.DefaultBoolean(true)
-        public boolean enabledLwjglKeybindingFix;
-
-        @Config.Comment("Fixes small oversights in Thaumcraft 4.")
-        @Config.DefaultBoolean(true)
-        public boolean enableTcAspectSafety;
-    }
 }

@@ -765,6 +765,7 @@ public enum MetaTileEntityIDs {
     BLACKHOLE_COMPRESSOR_CONTROLLER(3008),
     HEAT_DETECTOR_HATCH(3009),
     INDUSTRIAL_EXTRACTOR_CONTROLLER(3010),
+    INDUSTRIAL_BREWERY_CONTROLLER(3011),
     DraconicEvolutionFusionCrafterController(5001),
     CHEST_BUFFER_ULV(9230),
     CHEST_BUFFER_LV(9231),
@@ -1951,7 +1952,7 @@ public enum MetaTileEntityIDs {
 
     public final int ID;
 
-    private MetaTileEntityIDs(int ID) {
+    MetaTileEntityIDs(int ID) {
         this.ID = ID;
     }
 }
