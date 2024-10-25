@@ -167,6 +167,7 @@ import gregtech.common.items.MetaGeneratedTool01;
 import gregtech.common.misc.GlobalEnergyWorldSavedData;
 import gregtech.common.misc.GlobalMetricsCoverDatabase;
 import gregtech.common.misc.spaceprojects.SpaceProjectWorldSavedData;
+import gregtech.common.pollution.Pollution;
 import gregtech.common.tileentities.machines.multi.drone.MTEDroneCentre;
 import gregtech.nei.GTNEIDefaultHandler;
 
@@ -687,6 +688,17 @@ public abstract class GTProxy implements IGTMod, IFuelHandler {
     public int mTitleTabStyle = 0;
 
     /**
+     * Which style should tooltip separator lines have? 0: empty line, 1: dashed line, 2+: continuous line
+     */
+    public int separatorStyle = 2;
+
+    /**
+     * Which style should tooltip finisher separator lines have? 0: no line, 1: empty line, 2: dashed line, 3+:
+     * continuous line
+     */
+    public int tooltipFinisherStyle = 1;
+
+    /**
      * Whether to show seconds or ticks on NEI
      */
     public boolean mNEIRecipeSecondMode = true;
@@ -802,22 +814,15 @@ public abstract class GTProxy implements IGTMod, IFuelHandler {
             .getRegisteredFluidContainerData()) {
             onFluidContainerRegistration(new FluidContainerRegistry.FluidContainerRegisterEvent(tData));
         }
-        try {
-            for (String tOreName : OreDictionary.getOreNames()) {
-                ItemStack tOreStack;
-                for (Iterator<ItemStack> i$ = OreDictionary.getOres(tOreName)
-                    .iterator(); i$.hasNext(); registerOre(new OreDictionary.OreRegisterEvent(tOreName, tOreStack))) {
-                    tOreStack = i$.next();
-                }
+        for (String tOreName : OreDictionary.getOreNames()) {
+            for (ItemStack itemStack : OreDictionary.getOres(tOreName)) {
+                registerOre(new OreDictionary.OreRegisterEvent(tOreName, itemStack));
             }
-        } catch (Throwable e) {
-            e.printStackTrace(GTLog.err);
         }
     }
 
     public void onPreLoad() {
         GTLog.out.println("GTMod: Preload-Phase started!");
-        GTLog.ore.println("GTMod: Preload-Phase started!");
 
         GregTechAPI.sPreloadStarted = true;
         this.mIgnoreTcon = OPStuff.ignoreTinkerConstruct;
