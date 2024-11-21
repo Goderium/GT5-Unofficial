@@ -1647,7 +1647,7 @@ public class MTERecipeLoader implements Runnable {
             3);
 
         GTModHandler.addMachineCraftingRecipe(
-            ItemList.Machine_IV_PlasmaArcFurnace.get(1),
+            ItemList.Machine_EV_PlasmaArcFurnace.get(1),
             bitsd,
             new Object[] { "WGW", aTextCableHull, "TPT", 'M', MTEBasicMachineWithRecipe.X.HULL, 'P',
                 MTEBasicMachineWithRecipe.X.PLATE, 'C', MTEBasicMachineWithRecipe.X.BETTER_CIRCUIT, 'W',
@@ -3471,13 +3471,6 @@ public class MTERecipeLoader implements Runnable {
             new Object[] { "UCU", "FMF", aTextWireCoil, 'M', ItemList.Hull_UV, 'F', ItemList.Field_Generator_IV, 'C',
                 OrePrefixes.circuit.get(Materials.ZPM), 'W', OrePrefixes.wireGt04.get(Materials.Naquadah), 'U',
                 OrePrefixes.stick.get(Materials.Americium) });
-
-        GTModHandler.addCraftingRecipe(
-            ItemList.Processing_Array.get(1L),
-            bitsd,
-            new Object[] { "CTC", "FMF", "CBC", 'M', ItemList.Hull_EV, 'B',
-                OrePrefixes.pipeLarge.get(Materials.StainlessSteel), 'C', OrePrefixes.circuit.get(Materials.IV), 'F',
-                ItemList.Robot_Arm_EV, 'T', ItemList.Energy_LapotronicOrb });
 
         ProcessingArrayRecipeLoader.registerDefaultGregtechMaps();
         GTModHandler.addCraftingRecipe(
